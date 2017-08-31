@@ -5,6 +5,7 @@ import android.widget.ListView;
 import com.skycaster.new_hacks.activity.ThreadPoolDemo;
 import com.skycaster.new_hacks.adapter.DownLoadListAdapter;
 import com.skycaster.new_hacks.bean.DownLoadBean;
+import com.skycaster.new_hacks.manager.DownLoadTasksManager;
 
 import java.util.ArrayList;
 
@@ -33,5 +34,11 @@ public class ThreadPoolDemoPresenter {
         }
         mAdapter=new DownLoadListAdapter(mList,mActivity);
         mListView.setAdapter(mAdapter);
+    }
+
+    public void onStop(){
+        if(mActivity.isFinishing()){
+            DownLoadTasksManager.getInstance().cancelAll();
+        }
     }
 }

@@ -35,6 +35,12 @@ public class ThreadPoolDemo extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mPresenter.onStop();
+    }
+
     public ListView getListView() {
         return mListView;
     }
