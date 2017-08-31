@@ -33,6 +33,6 @@ public interface StaticData {
     int DOWNLOAD_STATE_PAUSE=2;
     int DOWNLOAD_STATE_FINISHED=3;
     int DOWNLOAD_STATE_FAILED=4;
-    int DONWLOAD_STATE_PENDING=5;
+    int DOWNLOAD_STATE_PENDING =5;
 
 }

@@ -1,19 +1,16 @@
 package com.skycaster.new_hacks.bean;
 
-import com.skycaster.new_hacks.adapter.DownLoadListAdapter;
 import com.skycaster.new_hacks.data.StaticData;
-import com.skycaster.new_hacks.intf.DownLoadStateListener;
 
 /**
  * Created by 廖华凯 on 2017/8/29.
  */
 
-public class DownLoadBean implements DownLoadStateListener{
+public class DownLoadBean {
     private String title;
     private int progress;
     private int state;
-    private DownLoadListAdapter.CallBack mCallBack;
-    private Thread mThread;
+    private DownLoadTask mDownLoadTask;
 
     public DownLoadBean(String title) {
         this.title = title;
@@ -41,55 +38,14 @@ public class DownLoadBean implements DownLoadStateListener{
         return state;
     }
 
-    public Thread getThread() {
-        return mThread;
+    public DownLoadTask getDownLoadTask() {
+        return mDownLoadTask;
     }
 
-    public void setThread(Thread thread) {
-        mThread = thread;
+    public void setDownLoadTask(DownLoadTask downLoadTask) {
+        mDownLoadTask = downLoadTask;
     }
 
-    @Override
-    public void onProgressUpdate(int progress) {
-        if(mCallBack!=null){
-            mCallBack.onProgressUpdate(progress);
-        }
-    }
-
-    @Override
-    public void onPause() {
-        if(mCallBack!=null){
-            mCallBack.onPause();
-        }
-
-    }
-
-    @Override
-    public void onComplete() {
-        if(mCallBack!=null){
-            mCallBack.onComplete();
-        }
-
-    }
-
-    @Override
-    public void onFailed() {
-        if(mCallBack!=null){
-            mCallBack.onFail();
-        }
-
-    }
-
-    @Override
-    public void onPending() {
-        if(mCallBack!=null){
-            mCallBack.onPending();
-        }
-    }
-
-    public void setCallBack(DownLoadListAdapter.CallBack callBack){
-        mCallBack=callBack;
-    }
 
     @Override
     public boolean equals(Object o) {

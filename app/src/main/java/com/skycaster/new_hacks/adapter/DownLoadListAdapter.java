@@ -1,8 +1,6 @@
 package com.skycaster.new_hacks.adapter;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -24,14 +22,10 @@ import java.util.ArrayList;
 public class DownLoadListAdapter extends BaseAdapter {
     private ArrayList<DownLoadBean> mList;
     private Context mContext;
-    private CallBack mCallBack;
-    private Handler mHandler;
 
     public DownLoadListAdapter(ArrayList<DownLoadBean> list, Context context) {
         mList = list;
         mContext = context;
-        mCallBack=new CallBack();
-        mHandler=new Handler(Looper.getMainLooper());
     }
 
     @Override
@@ -60,86 +54,41 @@ public class DownLoadListAdapter extends BaseAdapter {
             vh= (ViewHolder) convertView.getTag();
         }
         final DownLoadBean bean = mList.get(position);
-        bean.setCallBack(mCallBack);
         vh.title.setText(bean.getTitle());
         vh.progress.setProgress(bean.getProgress());
         switch (bean.getState()){
             case StaticData.DOWNLOAD_STATE_DOWNLOADING:
-                vh.getAction().setText("暂停");
+                vh.getAction().setText("下载中");
                 break;
             case StaticData.DOWNLOAD_STATE_FAILED:
-                vh.getAction().setText("重试");
+                vh.getAction().setText("下载失败");
                 break;
             case StaticData.DOWNLOAD_STATE_PAUSE:
-                vh.getAction().setText("继续");
+                vh.getAction().setText("已暂停");
                 break;
             case StaticData.DOWNLOAD_STATE_FINISHED:
-                vh.getAction().setText("完成");
+                vh.getAction().setText("已完成");
                 break;
-            case StaticData.DONWLOAD_STATE_PENDING:
+            case StaticData.DOWNLOAD_STATE_PENDING:
                 vh.getAction().setText("等待开始");
                 break;
             case StaticData.DOWNLOAD_STATE_DEFAULT:
             default:
-                vh.getAction().setText("开始");
+                vh.getAction().setText("点击开始");
                 break;
         }
-        final DownLoadTask downLoadTask=new DownLoadTask(bean);
+        if(bean.getDownLoadTask()==null){
+            DownLoadTask downLoadTask = new DownLoadTask(bean);
+            downLoadTask.setAdapter(this);
+            bean.setDownLoadTask(downLoadTask);
+        }
         vh.getAction().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                downLoadTask.handleActionByState(bean.getState());
+                bean.getDownLoadTask().handleActionByPreState(bean.getState());
             }
         });
         return convertView;
-    }
-
-    public class CallBack {
-        public void onProgressUpdate(int progress){
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    DownLoadListAdapter.this.notifyDataSetChanged();
-                }
-            });
-
-        }
-        public void onPause(){
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    DownLoadListAdapter.this.notifyDataSetChanged();
-                }
-            });
-
-        }
-        public void onComplete(){
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    DownLoadListAdapter.this.notifyDataSetChanged();
-                }
-            });
-
-        }
-        public void onFail(){
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    DownLoadListAdapter.this.notifyDataSetChanged();
-                }
-            });
-
-        }
-
-        public void onPending() {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    DownLoadListAdapter.this.notifyDataSetChanged();
-                }
-            });
-        }
     }
 
     private class ViewHolder {

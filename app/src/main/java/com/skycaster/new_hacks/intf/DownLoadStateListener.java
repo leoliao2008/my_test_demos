@@ -10,4 +10,5 @@ public interface DownLoadStateListener {
     void onComplete();
     void onFailed();
     void onPending();
+    void onCancel();
 }
