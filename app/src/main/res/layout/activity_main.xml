@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <Button
+            android:onClick="IpcDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="进程通讯测试"/>
+
+        <Button
+            android:onClick="NotificationDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="通知栏测试"/>
+
+        <Button
+            android:onClick="ThreadPoolDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="科学使用多线程"/>
+
+        <Button
+            android:onClick="SNRChartViewDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SNR线性图测试"/>
+
+    </LinearLayout>
+</ScrollView>

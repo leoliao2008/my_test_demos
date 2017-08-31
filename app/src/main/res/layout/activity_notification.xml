@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.skycaster.new_hacks.activity.NotificationDemo"
+    android:orientation="vertical">
+
+    <Button
+        android:onClick="showProgressDeterminate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确定进度的通知栏"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:onClick="showProgressIndeterminate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="不确定进度的通知栏"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:onClick="showHeadUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="举头通知栏"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:onClick="showCustomized"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义通知栏"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:onClick="showBigText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="可拉伸通知-BigText"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:onClick="showBigPic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="可拉伸通知-BigPic"
+        android:textAllCaps="false"/>
+
+
+</LinearLayout>

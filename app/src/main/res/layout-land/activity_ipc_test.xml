@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.skycaster.new_hacks.activity.IpcTestActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:onClick="sayHelloWorld"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HelloWord!"
+            android:textAllCaps="false"/>
+        <Button
+            android:onClick="sayGoodBye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GoodBye!"
+            android:textAllCaps="false"/>
+        <Button
+            android:onClick="sayMan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hey Man!"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:onClick="showNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Notification"
+        android:textAllCaps="false"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ToggleButton
+            android:id="@+id/main_toggle_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:textOff="未连接"
+            android:textOn="已连接"/>
+        <TextView
+            android:id="@+id/main_tv_console"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="未链接"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/main_toggle_start_transmission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="数据传输已停止"
+        android:textOn="数据传输中。。。"
+        android:textAllCaps="false"/>
+
+    <TextSwitcher
+        android:id="@+id/main_text_switcher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>
