@@ -34,4 +34,16 @@ public class MainActivity extends AppCompatActivity {
     public void SNRChartViewDemo(View view) {
         startActivity(new Intent(this,SnrChartViewDemo.class));
     }
+
+    public void ConfigChangeDemo(View view) {
+        startActivity(new Intent(this,ConfigChangeDemo.class));
+    }
+
+    public void SpannableString(View view) {
+        startActivity(new Intent(this,SpannableTextDemo.class));
+    }
+
+    public void DynamicLayout(View view) {
+        startActivity(new Intent(this,DynamicLayoutActivity.class));
+    }
 }

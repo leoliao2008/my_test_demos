@@ -1,7 +1,5 @@
 package com.skycaster.new_hacks.bean;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
 import android.widget.BaseAdapter;
@@ -18,11 +16,10 @@ public class DownLoadTask implements Runnable,DownLoadStateListener{
     private DownLoadBean mDownLoadBean;
     private Thread mThread;
     private BaseAdapter mAdapter;
-    private Handler mHandler;
+
 
     public DownLoadTask(DownLoadBean downLoadBean) {
         mDownLoadBean = downLoadBean;
-        mHandler=new Handler(Looper.getMainLooper());
     }
 
     @Override
@@ -32,7 +29,8 @@ public class DownLoadTask implements Runnable,DownLoadStateListener{
         while (progress<100&&!mThread.isInterrupted()){
             progress++;
             onProgressUpdate(progress);
-            SystemClock.sleep(1000);
+            showLog("Thread id = "+mThread.getId()+", progress = "+progress);
+            SystemClock.sleep(500);
         }
         if(mThread.isInterrupted()){
             onPause();
@@ -40,6 +38,7 @@ public class DownLoadTask implements Runnable,DownLoadStateListener{
             onComplete();
         }
     }
+
 
     public Thread getThread() {
         return mThread;
@@ -98,11 +97,12 @@ public class DownLoadTask implements Runnable,DownLoadStateListener{
         mDownLoadBean.setProgress(progress);
         mDownLoadBean.setState(StaticData.DOWNLOAD_STATE_DOWNLOADING);
         updateAdapter();
+
     }
 
     private void updateAdapter() {
         if(mAdapter!=null){
-            mHandler.post(new Runnable() {
+            DownLoadTasksManager.getInstance().post(new Runnable() {
                 @Override
                 public void run() {
                     mAdapter.notifyDataSetChanged();
@@ -116,12 +116,16 @@ public class DownLoadTask implements Runnable,DownLoadStateListener{
         mDownLoadBean.setState(StaticData.DOWNLOAD_STATE_PAUSE);
         updateAdapter();
 
+
     }
+
+
 
     @Override
     public void onComplete() {
         mDownLoadBean.setState(StaticData.DOWNLOAD_STATE_FINISHED);
         updateAdapter();
+
 
     }
 

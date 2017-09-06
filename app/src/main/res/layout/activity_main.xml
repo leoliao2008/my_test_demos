@@ -32,5 +32,25 @@
             android:layout_height="wrap_content"
             android:text="SNR线性图测试"/>
 
+        <Button
+            android:onClick="ConfigChangeDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="屏幕旋转方案-碎片保存"/>
+
+        <Button
+            android:onClick="SpannableString"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="动态文字实验"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:onClick="DynamicLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="动态布局实验"
+            android:textAllCaps="false"/>
+
     </LinearLayout>
 </ScrollView>

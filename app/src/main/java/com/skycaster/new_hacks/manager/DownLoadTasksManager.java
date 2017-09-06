@@ -1,5 +1,7 @@
 package com.skycaster.new_hacks.manager;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.skycaster.new_hacks.bean.DownLoadTask;
@@ -19,6 +21,7 @@ public class DownLoadTasksManager {
     private LinkedBlockingDeque<Runnable> mLinkedBlockingDeque=new LinkedBlockingDeque<>();
     private int coreNum;
     private ArrayList<DownLoadTask> mDownLoadTasks=new ArrayList<>();
+    private Handler mHandler;
 
     static {
         sDownLoadTasksManager =new DownLoadTasksManager();
@@ -27,13 +30,15 @@ public class DownLoadTasksManager {
         coreNum=Runtime.getRuntime().availableProcessors();
         showLog("coreNum = "+coreNum);
         mDownLoadThreadPoolExecutor=new ThreadPoolExecutor(
-                coreNum,
-                coreNum,
+                5,
+                5,
                 1000,
                 TimeUnit.MILLISECONDS,
                 mLinkedBlockingDeque
         );
         mDownLoadThreadPoolExecutor.allowCoreThreadTimeOut(true);
+        mHandler=new Handler(Looper.getMainLooper());
+
     }
     public static DownLoadTasksManager getInstance(){
         return sDownLoadTasksManager;
@@ -51,7 +56,7 @@ public class DownLoadTasksManager {
         mDownLoadThreadPoolExecutor.getQueue().clear();
         for (int i=0,size=mDownLoadTasks.size();i<size;i++){
             Thread thread = mDownLoadTasks.get(i).getThread();
-            if(thread!=null&&thread.isAlive()){
+            if(thread!=null){
                 thread.interrupt();
             }
         }
@@ -63,13 +68,18 @@ public class DownLoadTasksManager {
         mDownLoadThreadPoolExecutor.getQueue().remove(task);
         mDownLoadTasks.remove(task);
         Thread thread = task.getThread();
-        if(thread!=null&&thread.isAlive()){
+        if(thread!=null){
             thread.interrupt();
         }
     }
 
+
     private void showLog(String msg){
         Log.e(getClass().getSimpleName(),msg);
+    }
+
+    public void post(Runnable runnable){
+        mHandler.post(runnable);
     }
 
 

@@ -35,7 +35,11 @@
             android:taskAffinity=""/>
         <activity android:name=".activity.NotificationDemo"/>
         <activity android:name=".activity.ThreadPoolDemo"/>
-        <activity android:name=".activity.SnrChartViewDemo">
+        <activity android:name=".activity.SnrChartViewDemo"/>
+        <activity android:name=".activity.ConfigChangeDemo"/>
+        <activity android:name=".activity.SpannableTextDemo">
+        </activity>
+        <activity android:name=".activity.DynamicLayoutActivity">
         </activity>
     </application>
 
