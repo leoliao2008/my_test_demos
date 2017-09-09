@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/menu_item_1"
-          android:icon="@drawable/ic_block_grey600_48dp"
+          android:icon="@drawable/vd_smiling_face"
           android:title="Title 1"
           app:showAsAction="always"/>
     <item android:id="@+id/menu_item_2"

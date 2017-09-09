@@ -46,4 +46,8 @@ public class MainActivity extends AppCompatActivity {
     public void DynamicLayout(View view) {
         startActivity(new Intent(this,DynamicLayoutActivity.class));
     }
+
+    public void VectorDemo(View view) {
+        startActivity(new Intent(this,VectorDrawableDemo.class));
+    }
 }

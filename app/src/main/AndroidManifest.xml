@@ -41,6 +41,8 @@
         </activity>
         <activity android:name=".activity.DynamicLayoutActivity">
         </activity>
+        <activity android:name=".activity.VectorDrawableDemo">
+        </activity>
     </application>
 
 </manifest>

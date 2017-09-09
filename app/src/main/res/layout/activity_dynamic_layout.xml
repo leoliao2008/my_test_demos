@@ -86,6 +86,21 @@
 
         </LinearLayout>
 
+        <Button
+            android:onClick="animatePVH"
+            android:id="@+id/dynamic_btn_test_property_value_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PropertyValueHolderTest"
+            android:textAllCaps="false"/>
+        <ImageView
+            android:onClick="animateViewPropertyAnimation"
+            android:id="@+id/dynamic_iv_compass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/compass_view"
+            />
+
 
     </LinearLayout>
 

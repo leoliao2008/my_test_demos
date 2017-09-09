@@ -15,6 +15,8 @@ android {
                 cppFlags "-frtti -fexceptions"
             }
         }
+        vectorDrawables.useSupportLibrary = true
+
     }
     buildTypes {
         release {

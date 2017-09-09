@@ -52,5 +52,12 @@
             android:text="动态布局实验"
             android:textAllCaps="false"/>
 
+        <Button
+            android:onClick="VectorDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="矢量图实验"
+            android:textAllCaps="false"/>
+
     </LinearLayout>
 </ScrollView>
