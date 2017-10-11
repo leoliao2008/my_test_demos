@@ -43,6 +43,8 @@
         </activity>
         <activity android:name=".activity.VectorDrawableDemo">
         </activity>
+        <activity android:name=".activity.NewAnimationDemo">
+        </activity>
     </application>
 
 </manifest>

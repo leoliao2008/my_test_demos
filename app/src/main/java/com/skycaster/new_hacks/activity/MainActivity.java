@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.skycaster.new_hacks.R;
 
+
 /**
  * Created by 廖华凯 on 2017/8/28.
  */
@@ -49,5 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void VectorDemo(View view) {
         startActivity(new Intent(this,VectorDrawableDemo.class));
+    }
+
+    public void NewAnimation(View view) {
+        startActivity(new Intent(this,NewAnimationDemo.class));
     }
 }

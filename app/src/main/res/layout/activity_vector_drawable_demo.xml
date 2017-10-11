@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,22 +8,85 @@
     android:orientation="vertical"
     tools:context="com.skycaster.new_hacks.activity.VectorDrawableDemo">
 
-    <ImageView
-        android:id="@+id/vector_drawable_iv_1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/avd_hand_writing"/>
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/vector_drawable_iv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/avd_hand_writing"/>
 
-    <ImageView
-        android:id="@+id/vector_drawable_iv_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/avd_smiling_face"/>
+        <ImageView
+            android:id="@+id/vector_drawable_iv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/avd_smiling_face"/>
 
-    <ImageView
-        android:id="@+id/vector_drawable_iv_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/avd_rec_to_tri"/>
+        <ImageView
+            android:id="@+id/vector_drawable_iv_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/avd_rec_to_tri"/>
 
-</LinearLayout>
+
+        <ImageView
+            android:id="@+id/vector_drawable_iv_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/asl_net_status_icon"/>
+        <RadioGroup
+            android:id="@+id/vector_drawable_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <RadioButton
+                android:onClick="toStateNormal"
+                android:id="@+id/rb1"
+                android:text="normal"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:onClick="toStateUnstable"
+                android:id="@+id/rb2"
+                android:text="unstable"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:onClick="toStateStopped"
+                android:id="@+id/rb3"
+                android:text="stop"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:onClick="toStateNoUpdate"
+                android:id="@+id/rb4"
+                android:text="no update"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:onClick="toStateLinkError"
+                android:id="@+id/rb5"
+                android:text="link error"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:onClick="toStateInitializing"
+                android:id="@+id/rb6"
+                android:text="init"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
+    </LinearLayout>
+
+
+
+</ScrollView>

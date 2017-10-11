@@ -91,7 +91,7 @@ public class IpcServer extends Service {
             builder.setContentTitle("This is a notification.");
             builder.setContentText("Click to start a new activity.");
             builder.setContentIntent(pendingIntent);
-            builder.setChannel("My_Channel_ID_01");
+//            builder.setChannel("My_Channel_ID_01");
             builder.setAutoCancel(true);
             builder.setWhen(System.currentTimeMillis());
             builder.setOnlyAlertOnce(true);

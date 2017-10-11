@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/vd_five_star">
+    <target
+        android:animation="@animator/animator_five_star"
+        android:name="star"/>
+</animated-vector>
