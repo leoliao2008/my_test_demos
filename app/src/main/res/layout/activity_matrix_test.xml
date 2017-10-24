@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.skycaster.new_hacks.activity.MatrixTestActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:onClick="startSkew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="StartSkew"
+            android:textAllCaps="false"/>
+        <Button
+            android:onClick="stopSkew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="StopSkew"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+
+    <com.skycaster.new_hacks.customized.ViewTransformer
+        android:id="@+id/matrix_test_view_transformer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+</FrameLayout>

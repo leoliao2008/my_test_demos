@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <declare-styleable name="ScratchCardView">
+        <attr name="bgSrc" format="reference"/>
+        <attr name="fgSrc" format="reference"/>
+    </declare-styleable>
+
 </resources>

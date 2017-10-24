@@ -45,6 +45,22 @@
         </activity>
         <activity android:name=".activity.NewAnimationDemo">
         </activity>
+        <activity android:name=".activity.ZmbleImageViewDemo">
+        </activity>
+        <activity android:name=".activity.ListViewTestDemo">
+        </activity>
+        <activity android:name=".activity.MatrixTestActivity">
+        </activity>
+        <activity android:name=".activity.VectorDrawableCompatDemo">
+        </activity>
+        <activity android:name=".activity.StripperDemo">
+        </activity>
+        <activity android:name=".activity.ScratchViewDemo">
+        </activity>
+        <activity android:name=".activity.ColorMatrixDemo_One">
+        </activity>
+        <activity android:name=".activity.ColorMatrixDemo_Two">
+        </activity>
     </application>
 
 </manifest>

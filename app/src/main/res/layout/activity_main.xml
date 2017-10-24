@@ -56,7 +56,13 @@
             android:onClick="VectorDemo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="矢量图实验"
+            android:text="矢量图实验(5.0以上系统)"
+            android:textAllCaps="false"/>
+        <Button
+            android:onClick="VectorCompatDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="矢量图兼容(5.0以下系统)"
             android:textAllCaps="false"/>
 
         <Button
@@ -65,6 +71,50 @@
             android:layout_height="wrap_content"
             android:text="5.0动画（非矢量）"
             android:textAllCaps="false"/>
+
+        <Button
+            android:onClick="toZoomableImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="细节图片"/>
+
+        <Button
+            android:onClick="toListViewDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ListView实验"/>
+
+        <Button
+            android:onClick="toMatrixTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Matrix实验"/>
+
+        <Button
+            android:onClick="toStripper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="脱衣服测试"/>
+
+        <Button
+            android:onClick="toScratchViewDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="刮刮乐"/>
+
+        <Button
+            android:onClick="toColorMatrixDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="ColorMatrixDemo_1"/>
+
+        <Button
+            android:onClick="toColorMatrixDemo_Two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="ColorMatrixDemo_2"/>
 
     </LinearLayout>
 </ScrollView>

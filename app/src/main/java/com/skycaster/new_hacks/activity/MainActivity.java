@@ -55,4 +55,36 @@ public class MainActivity extends AppCompatActivity {
     public void NewAnimation(View view) {
         startActivity(new Intent(this,NewAnimationDemo.class));
     }
+
+    public void toZoomableImageView(View view) {
+        ZmbleImageViewDemo.start(this);
+    }
+
+    public void toListViewDemo(View view) {
+        ListViewTestDemo.start(this);
+    }
+
+    public void toMatrixTest(View view) {
+        MatrixTestActivity.start(this);
+    }
+
+    public void VectorCompatDemo(View view) {
+        VectorDrawableCompatDemo.start(this);
+    }
+
+    public void toStripper(View view) {
+        StripperDemo.start(this);
+    }
+
+    public void toScratchViewDemo(View view) {
+        ScratchViewDemo.start(this);
+    }
+
+    public void toColorMatrixDemo(View view) {
+        ColorMatrixDemo_One.start(this);
+    }
+
+    public void toColorMatrixDemo_Two(View view) {
+        ColorMatrixDemo_Two.start(this);
+    }
 }
