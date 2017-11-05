@@ -2,11 +2,21 @@ package com.skycaster.new_hacks.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.skycaster.new_hacks.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -14,77 +24,78 @@ import com.skycaster.new_hacks.R;
  */
 
 public class MainActivity extends AppCompatActivity {
+    @BindView(R.id.main_list_view)
+    ListView mListView;
+    private String[] mTitles=new String[]{
+            "进程间通讯最新用法",
+            "通知栏测试",
+            "线程池最佳案例",
+            "柱形图",
+            "屏幕旋转及开关机",
+            "字符串高级用法",
+            "动态布局测试",
+            "矢量图动画",
+            "5.0新动画实验",
+            "自定义详情图",
+            "矩阵测试",
+            "脱衣服实验",
+            "刮刮乐实验",
+            "颜色矩阵实验1",
+            "颜色矩阵实验2",
+            "SurfaceView画板"
+    };
+    private Class[] mActivities=new Class[]{
+            IpcTestActivity.class,
+            NotificationDemo.class,
+            ThreadPoolDemo.class,
+            SnrChartViewDemo.class,
+            ConfigChangeDemo.class,
+            SpannableTextDemo.class,
+            DynamicLayoutActivity.class,
+            VectorDrawableDemo.class,
+            VectorDrawableCompatDemo.class,
+            ZmbleImageViewDemo.class,
+            MatrixTestActivity.class,
+            StripperDemo.class,
+            ScratchViewDemo.class,
+            ColorMatrixDemo_One.class,
+            ColorMatrixDemo_Two.class,
+            DrawingPadDemo.class
+    };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        iniData();
     }
 
-    public void IpcDemo(View view) {
-        startActivity(new Intent(this,IpcTestActivity.class));
+    private void iniData() {
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_spinner_item,
+                mTitles
+        ){
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                TextView tv= (TextView) super.getView(position, convertView, parent);
+                tv.setGravity(Gravity.CENTER);
+                return tv;
+            }
+        };
+        mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Class activity = mActivities[i];
+                Intent intent=new Intent(MainActivity.this,activity);
+                startActivity(intent);
+
+            }
+        });
     }
 
-    public void NotificationDemo(View view) {
-        startActivity(new Intent(this,NotificationDemo.class));
-    }
 
-    public void ThreadPoolDemo(View view) {
-        startActivity(new Intent(this,ThreadPoolDemo.class));
-    }
-
-    public void SNRChartViewDemo(View view) {
-        startActivity(new Intent(this,SnrChartViewDemo.class));
-    }
-
-    public void ConfigChangeDemo(View view) {
-        startActivity(new Intent(this,ConfigChangeDemo.class));
-    }
-
-    public void SpannableString(View view) {
-        startActivity(new Intent(this,SpannableTextDemo.class));
-    }
-
-    public void DynamicLayout(View view) {
-        startActivity(new Intent(this,DynamicLayoutActivity.class));
-    }
-
-    public void VectorDemo(View view) {
-        startActivity(new Intent(this,VectorDrawableDemo.class));
-    }
-
-    public void NewAnimation(View view) {
-        startActivity(new Intent(this,NewAnimationDemo.class));
-    }
-
-    public void toZoomableImageView(View view) {
-        ZmbleImageViewDemo.start(this);
-    }
-
-    public void toListViewDemo(View view) {
-        ListViewTestDemo.start(this);
-    }
-
-    public void toMatrixTest(View view) {
-        MatrixTestActivity.start(this);
-    }
-
-    public void VectorCompatDemo(View view) {
-        VectorDrawableCompatDemo.start(this);
-    }
-
-    public void toStripper(View view) {
-        StripperDemo.start(this);
-    }
-
-    public void toScratchViewDemo(View view) {
-        ScratchViewDemo.start(this);
-    }
-
-    public void toColorMatrixDemo(View view) {
-        ColorMatrixDemo_One.start(this);
-    }
-
-    public void toColorMatrixDemo_Two(View view) {
-        ColorMatrixDemo_Two.start(this);
-    }
 }
