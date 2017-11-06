@@ -42,8 +42,6 @@ public class RippleLayout extends FrameLayout {
         if(viewCache==null){
             return;
         }
-
-
     }
 
     private Bitmap getViewCache(){
