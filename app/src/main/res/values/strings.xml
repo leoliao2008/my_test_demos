@@ -13,6 +13,7 @@
     <string name="path_tri">
         M 200,100 L 200,100 L 300,300 L 100,300 z
     </string>
+    <string name="title_activity_matrix_demo__one">MatrixDemo_One</string>
 
 
 </resources>

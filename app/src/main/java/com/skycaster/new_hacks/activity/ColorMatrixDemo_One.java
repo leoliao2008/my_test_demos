@@ -89,7 +89,7 @@ public class ColorMatrixDemo_One extends AppCompatActivity {
                 try {
                     mColorMatrix[i]=Float.valueOf(input.trim());
                 }catch (NumberFormatException e){
-                    mColorMatrix[i]=1;
+                    mColorMatrix[i]=0;
                 }
 
             }

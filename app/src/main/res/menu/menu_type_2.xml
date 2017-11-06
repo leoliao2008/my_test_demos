@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/menu_item_1"
+          android:icon="@drawable/vd_five_star"
+          android:title="Title 1"
+          app:showAsAction="always"/>
+    <item android:id="@+id/menu_item_2"
+          android:icon="@drawable/vd_net_status_stop"
+          android:title="Title 2"
+          app:showAsAction="always"/>
+    <item android:id="@+id/menu_item_3"
+          android:icon="@drawable/ic_block_grey600_48dp"
+          android:title="aaaa"
+          app:showAsAction="ifRoom"/>
+    <item android:id="@+id/menu_item_4"
+          android:icon="@drawable/ic_block_grey600_48dp"
+          android:title="bbbb"
+          app:showAsAction="ifRoom"/>
+    <item android:id="@+id/menu_item_5"
+          android:icon="@drawable/ic_block_grey600_48dp"
+          android:title="cccc"
+          app:showAsAction="never"/>
+    <item android:id="@+id/menu_item_6"
+          android:icon="@drawable/ic_block_grey600_48dp"
+          android:title="dddd"
+          app:showAsAction="never"/>
+
+
+</menu>

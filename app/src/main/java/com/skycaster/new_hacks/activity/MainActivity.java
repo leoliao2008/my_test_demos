@@ -37,12 +37,18 @@ public class MainActivity extends AppCompatActivity {
             "矢量图动画",
             "5.0新动画实验",
             "自定义详情图",
-            "矩阵测试",
+            "矩阵测试一",
             "脱衣服实验",
             "刮刮乐实验",
             "颜色矩阵实验1",
             "颜色矩阵实验2",
-            "SurfaceView画板"
+            "SurfaceView画板",
+            "Action Bar实验",
+            "矩阵测试二",
+            "Tool Bar测试",
+            "雨点效果测试",
+            "Pending Intent 测试"
+
     };
     private Class[] mActivities=new Class[]{
             IpcTestActivity.class,
@@ -60,7 +66,12 @@ public class MainActivity extends AppCompatActivity {
             ScratchViewDemo.class,
             ColorMatrixDemo_One.class,
             ColorMatrixDemo_Two.class,
-            DrawingPadDemo.class
+            DrawingPadDemo.class,
+            ActionBarDemo.class,
+            MatrixDemo_One.class,
+            ToolBarActivity.class,
+            DrawBitmapMessDemo.class,
+            PendingIntentActivity.class
     };
 
     @Override
