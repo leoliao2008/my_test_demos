@@ -1,10 +1,13 @@
 package com.skycaster.new_hacks.customized;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -29,6 +32,11 @@ public class SketchPadView extends SurfaceView {
     private Path mPath;
     private boolean mIsDrawing;
     private Thread mThread;
+    private Canvas mSnapShotCanvas;
+    private Bitmap mSnapShotBitmap;
+    private boolean mIsClear;
+    private PorterDuffXfermode mClearMode;
+    private PorterDuffXfermode mSrcMode;
 
 
     public SketchPadView(Context context) {
@@ -47,7 +55,11 @@ public class SketchPadView extends SurfaceView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(getDimension(widthMeasureSpec, FLAG_WIDTH_SPEC), getDimension(heightMeasureSpec, FLAG_HEIGHT_SPEC));
+        int width = getDimension(widthMeasureSpec, FLAG_WIDTH_SPEC);
+        int height = getDimension(heightMeasureSpec, FLAG_HEIGHT_SPEC);
+        mSnapShotBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_4444);
+        mSnapShotCanvas=new Canvas(mSnapShotBitmap);
+        setMeasuredDimension(width, height);
     }
 
     private int getDimension(int measureSpec, int flag) {
@@ -69,12 +81,16 @@ public class SketchPadView extends SurfaceView {
         return size;
     }
 
+
     private void init() {
+
         mPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setColor(Color.RED);
         mPaint.setStyle(Paint.Style.STROKE);
         mPath=new Path();
         mPath.setFillType(Path.FillType.WINDING);
+        mClearMode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+        mSrcMode = new PorterDuffXfermode(PorterDuff.Mode.SRC);
         mHolder = getHolder();
         mHolder.addCallback(new SurfaceHolder.Callback() {
             @Override
@@ -110,7 +126,22 @@ public class SketchPadView extends SurfaceView {
                     if(mThread.isInterrupted()||canvas==null){
                         break;
                     }
+
+                    //重要，这一步是要清除之前的轨迹，否则点击清除后还会保留之前轨迹。
+                    mPaint.setXfermode(mClearMode);
+                    canvas.drawPaint(mPaint);
+                    if(mSnapShotCanvas!=null){
+                        mSnapShotCanvas.drawPaint(mPaint);
+                    }
+                    mPaint.setXfermode(mSrcMode);
+
+
+
+                    canvas.drawColor(Color.WHITE);
                     canvas.drawPath(mPath, mPaint);
+                    if(mSnapShotCanvas!=null){
+                        mSnapShotCanvas.drawPath(mPath,mPaint);
+                    }
                     mHolder.unlockCanvasAndPost(canvas);
                     long timeEnd=System.currentTimeMillis();
                     long interval = timeEnd - timeStart;
@@ -144,8 +175,17 @@ public class SketchPadView extends SurfaceView {
         return true;
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+    public void clear(){
+        mPath.reset();
     }
+
+    public Bitmap getSnapShot(){
+//        setDrawingCacheEnabled(true);
+//        buildDrawingCache(true);
+//        Bitmap drawingCache = getDrawingCache();
+//        Bitmap bitmap = Bitmap.createBitmap(drawingCache);
+//        setDrawingCacheEnabled(false);
+        return mSnapShotBitmap;
+    }
+
 }

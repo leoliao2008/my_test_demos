@@ -75,16 +75,16 @@ public class ActionBarDemo extends AppCompatActivity {
             public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                 switch (item.getItemId()) {
                     case menu_item_1:
-                        showTost("item 1 is clicked.");
+                        showToast("item 1 is clicked.");
                         break;
                     case menu_item_2:
-                        showTost("item 2 is clicked.");
+                        showToast("item 2 is clicked.");
                         break;
                     case menu_item_3:
-                        showTost("item 3 is clicked.");
+                        showToast("item 3 is clicked.");
                         break;
                     case menu_item_4:
-                        showTost("item 4 is clicked.");
+                        showToast("item 4 is clicked.");
                         break;
                     default:
                         break;
@@ -95,12 +95,11 @@ public class ActionBarDemo extends AppCompatActivity {
             @Override
             public void onDestroyActionMode(ActionMode mode) {
                 mToggleButton.setChecked(false);
-
             }
         });
     }
 
-    public void showTost(String msg) {
+    public void showToast(String msg) {
         ToastUtil.toast(this, msg);
     }
 }
