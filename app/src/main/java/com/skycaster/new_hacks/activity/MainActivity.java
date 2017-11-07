@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
             "Tool Bar测试",
             "雨点效果测试",
             "Pending Intent 测试",
-            "截图测试"
+            "截图测试",
+            "波纹特效测试"
 
     };
     private Class[] mActivities=new Class[]{
@@ -73,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
             ToolBarActivity.class,
             DrawBitmapMessDemo.class,
             PendingIntentActivity.class,
-            DrawingCacheDemo.class
+            DrawingCacheDemo.class,
+            RippleActivity.class
     };
 
     @Override
