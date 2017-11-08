@@ -20,11 +20,29 @@ public class RippleLayout extends FrameLayout {
     private final int HORIZONTAL_BLOCKS_COUNT=20;
     private final int VERTICAL_BLOCKS_COUNT=20;
     private final int VERTICS_COUNT=(HORIZONTAL_BLOCKS_COUNT+1)*(VERTICAL_BLOCKS_COUNT+1)*2;
+    /**
+     * 网格顶点坐标的集合
+     */
     private float mVerticsOrigin[]=new float[VERTICS_COUNT];
+    /**
+     * 启动波纹时的网格顶点坐标的集合
+     */
     private float mVerticsRipple[] =new float[VERTICS_COUNT];
+    /**
+     * 从波纹中心到外环最边缘的的距离减去外环宽度的一半
+     */
     private int mRippleRadius;
+    /**
+     * 波纹传播的速度
+     */
     private int mRippleSpeed=16;
+    /**
+     * 外环的环宽
+     */
     private int mRippleRingWidth=100;
+    /**
+     * 当前页面截图
+     */
     private Bitmap mSnapShot;
     private boolean isRippling;
     private Paint mPaint;
@@ -64,11 +82,10 @@ public class RippleLayout extends FrameLayout {
                 if(initRipple()){
                     isRippling=true;
                     double distance = getDistance(0, 0, mSnapShot.getWidth(), mSnapShot.getHeight())+mRippleRingWidth/2;
-                    int v = (int) (distance / mRippleSpeed+0.5f);
-                    for(mRippleRadius=0;mRippleRadius<v;mRippleRadius+=mRippleSpeed){
-                        findAffectedVertics(x,y);
+                    for(mRippleRadius=0;mRippleRadius<distance;mRippleRadius+=mRippleSpeed){
+                        findAndMorphAffectedVertics(x,y);
                         try {
-                            Thread.sleep(100);
+                            Thread.sleep(10);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -79,19 +96,19 @@ public class RippleLayout extends FrameLayout {
         }).start();
     }
 
-    private void findAffectedVertics(float x, float y) {
-        for(int i=0;i<VERTICS_COUNT/2;i++){
-            float fromX = mVerticsOrigin[i * 2];
-            float fromY = mVerticsOrigin[i * 2 + 1];
+    private void findAndMorphAffectedVertics(float x, float y) {
+        for(int i=0;i<VERTICS_COUNT;i+=2){
+            float fromX = mVerticsOrigin[i ];
+            float fromY = mVerticsOrigin[i + 1];
             double distance = getDistance(fromX, fromY, x, y);
-            if(distance>=mRippleRadius-mRippleRingWidth/2&&distance<=mRippleRadius+mRippleRingWidth/2){
-                morphAffectedVertics(i*2,x,y,distance);
+            if(distance>mRippleRadius-mRippleRingWidth/2&&distance<mRippleRadius+mRippleRingWidth/2){
+                morphVertic(i,x,y,distance);
             }else {
-                mVerticsRipple[i*2]=mVerticsOrigin[i*2];
-                mVerticsRipple[i*2+1]=mVerticsOrigin[i*2+1];
+                mVerticsRipple[i]=mVerticsOrigin[i];
+                mVerticsRipple[i+1]=mVerticsOrigin[i+1];
             }
-            postInvalidate();
         }
+        postInvalidate();
     }
 
     @Override
@@ -119,14 +136,14 @@ public class RippleLayout extends FrameLayout {
      * @param centerY 水纹中心的y坐标
      * @param distance 该顶点距离水纹中心的距离
      */
-    private void morphAffectedVertics(int index, float centerX, float centerY, double distance) {
-        float x = mVerticsRipple[index];
-        float y = mVerticsRipple[index + 1];
-        double rate = (distance - mRippleRadius) / (mRippleRingWidth / 2);
-        double offSetLength = Math.cos(rate) * 10;
+    private void morphVertic(int index, float centerX, float centerY, double distance) {
+        float x = mVerticsOrigin[index];
+        float y = mVerticsOrigin[index + 1];
+        double rate = (distance - mRippleRadius) / (mRippleRingWidth / 2f);
+        double offSetLength = Math.cos(rate) * 10f;
         double angle=Math.atan((y-centerY)/(x-centerX));
-        double offSetX=Math.cos(angle)*offSetLength;
-        double offSetY=Math.sin(angle)*offSetLength;
+        double offSetX=offSetLength*Math.cos(angle);
+        double offSetY=offSetLength*Math.sin(angle);
         if(distance>=mRippleRadius){
             //波峰外环
             if(x>centerX){
@@ -167,34 +184,15 @@ public class RippleLayout extends FrameLayout {
         if(mSnapShot ==null){
             return false;
         }
-        int blockWidth= mSnapShot.getWidth() / HORIZONTAL_BLOCKS_COUNT;
-        int blockHeight= mSnapShot.getHeight()/VERTICAL_BLOCKS_COUNT;
-        //填充坐标
-//        //第一行
-//        for(int i=0;i<HORIZONTAL_BLOCKS_COUNT+1;i++){
-//            int index=(i+(HORIZONTAL_BLOCKS_COUNT+1)*0)*2;
-//            mVerticsOrigin[index]=blockWidth*i;
-//            mVerticsOrigin[index+1]=0;
-//        }
-//        //第二行
-//        for(int i=0;i<HORIZONTAL_BLOCKS_COUNT+1;i++){
-//            int index=(i+(HORIZONTAL_BLOCKS_COUNT+1)*1)*2;
-//            mVerticsOrigin[index]=blockWidth*i;
-//            mVerticsOrigin[index+1]=blockHeight*1;
-//        }
-//        //第三行
-//        for(int i=0;i<HORIZONTAL_BLOCKS_COUNT+1;i++){
-//            int index=(i+(HORIZONTAL_BLOCKS_COUNT+1)*2)*2;
-//            mVerticsOrigin[index]=blockWidth*i;
-//            mVerticsOrigin[index+1]=blockHeight*2;
-//        }
-//        //......
-        //由上面可以推导以下填充逻辑：
-        for(int line=0;line<VERTICAL_BLOCKS_COUNT+1;line++){
-            for (int i=0;i<HORIZONTAL_BLOCKS_COUNT+1;i++){
-                int index=(i+(HORIZONTAL_BLOCKS_COUNT+1)*line)*2;
-                mVerticsOrigin[index]=mVerticsRipple[index]=blockWidth*i;
-                mVerticsOrigin[index+1]=mVerticsRipple[index+1]=blockHeight*line;
+        //填充顶点坐标：
+        int index=0;
+        for(int height=0;height<=VERTICAL_BLOCKS_COUNT;height++){
+            //先相乘，再除，这样才能获得准确的坐标
+            int y = mSnapShot.getHeight() * height / VERTICAL_BLOCKS_COUNT;
+            for (int width=0;width<=HORIZONTAL_BLOCKS_COUNT;width++){
+                mVerticsOrigin[index*2]=mVerticsRipple[index*2]=mSnapShot.getWidth() *width/ HORIZONTAL_BLOCKS_COUNT;
+                mVerticsOrigin[index*2+1]=mVerticsRipple[index*2+1]= y;
+                index++;
             }
         }
         return true;

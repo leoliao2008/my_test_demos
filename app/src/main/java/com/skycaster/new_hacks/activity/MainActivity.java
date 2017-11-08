@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
             "雨点效果测试",
             "Pending Intent 测试",
             "截图测试",
-            "波纹特效测试"
+            "波纹特效测试",
+            "波浪特效测试"
 
     };
     private Class[] mActivities=new Class[]{
@@ -75,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
             DrawBitmapMessDemo.class,
             PendingIntentActivity.class,
             DrawingCacheDemo.class,
-            RippleActivity.class
+            RippleActivity.class,
+            WavaViewDemo.class
     };
 
     @Override
@@ -97,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 TextView tv= (TextView) super.getView(position, convertView, parent);
                 tv.setGravity(Gravity.CENTER);
+                tv.setTextSize(25);
                 return tv;
             }
         };
@@ -107,10 +110,12 @@ public class MainActivity extends AppCompatActivity {
                 Class activity = mActivities[i];
                 Intent intent=new Intent(MainActivity.this,activity);
                 startActivity(intent);
-
             }
         });
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

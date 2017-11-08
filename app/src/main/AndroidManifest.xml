@@ -77,6 +77,8 @@
         </activity>
         <activity android:name=".activity.RippleActivity">
         </activity>
+        <activity android:name=".activity.WavaViewDemo">
+        </activity>
     </application>
 
 </manifest>

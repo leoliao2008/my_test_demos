@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.skycaster.new_hacks.activity.WavaViewDemo">
+
+    <com.skycaster.new_hacks.customized.WaveView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:src="@drawable/pic_03"/>
+
+
+</FrameLayout>
