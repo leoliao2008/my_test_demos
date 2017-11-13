@@ -22,6 +22,7 @@ public class WaveView extends View {
     private Bitmap mBitmapSrc;
     private int HORIZONTAL_BLOCK_COUNT =20;
     private int VERTICAL_BLOCK_COUNT =20;
+    private int WAVE_HEIGHT=50;
     private int GROUP_SIZE= (HORIZONTAL_BLOCK_COUNT +1)*(VERTICAL_BLOCK_COUNT +1)*2;
     private float[] mVerticsSrc=new float[GROUP_SIZE];
     private float[] mVerticsDst=new float[GROUP_SIZE];
@@ -85,10 +86,11 @@ public class WaveView extends View {
     private void startWaveAnimation() {
         for(int i=0;i<GROUP_SIZE;i+=2){
             float y = mVerticsSrc[i + 1];
-            y+=Math.sin(mOffSet)*50;
+            y+=Math.sin(mOffSet)*WAVE_HEIGHT;
             mVerticsDst[i+1]=y;
             mOffSet+=mSpeed;
         }
+
         postInvalidate();
     }
 

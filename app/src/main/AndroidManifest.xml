@@ -79,6 +79,8 @@
         </activity>
         <activity android:name=".activity.WavaViewDemo">
         </activity>
+        <activity android:name=".activity.LayoutAnimationControllerDemo">
+        </activity>
     </application>
 
 </manifest>

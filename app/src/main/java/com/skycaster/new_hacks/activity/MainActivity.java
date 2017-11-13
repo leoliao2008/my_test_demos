@@ -50,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
             "Pending Intent 测试",
             "截图测试",
             "波纹特效测试",
-            "波浪特效测试"
+            "波浪特效测试",
+            "LayoutAnimationController实验"
 
     };
     private Class[] mActivities=new Class[]{
@@ -77,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
             PendingIntentActivity.class,
             DrawingCacheDemo.class,
             RippleActivity.class,
-            WavaViewDemo.class
+            WavaViewDemo.class,
+            LayoutAnimationControllerDemo.class
     };
 
     @Override
