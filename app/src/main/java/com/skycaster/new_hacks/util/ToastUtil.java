@@ -14,7 +14,7 @@ import com.skycaster.new_hacks.R;
  */
 
 public class ToastUtil {
-
+    private static Toast toast;
     public static void showCustomToast(Context context,String msg){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.custom_toast, null);
@@ -28,6 +28,18 @@ public class ToastUtil {
     }
 
     public static void toast(Context context,String msg){
-        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();
+        if(toast==null){
+            toast=Toast.makeText(context,msg,Toast.LENGTH_SHORT);
+        }else {
+            toast.setText(msg);
+        }
+        toast.show();
+    }
+
+    public static void shutUp(){
+        if(toast!=null){
+            toast.cancel();
+            toast=null;
+        }
     }
 }

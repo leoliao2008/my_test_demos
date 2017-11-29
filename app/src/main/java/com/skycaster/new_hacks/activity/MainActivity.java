@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
             "截图测试",
             "波纹特效测试",
             "波浪特效测试",
-            "LayoutAnimationController实验"
+            "LayoutAnimationController实验",
+            "Handler耗时测试"
 
     };
     private Class[] mActivities=new Class[]{
@@ -79,7 +80,8 @@ public class MainActivity extends AppCompatActivity {
             DrawingCacheDemo.class,
             RippleActivity.class,
             WavaViewDemo.class,
-            LayoutAnimationControllerDemo.class
+            LayoutAnimationControllerDemo.class,
+            HandlerTest.class
     };
 
     @Override

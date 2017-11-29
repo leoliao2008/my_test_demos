@@ -81,6 +81,8 @@
         </activity>
         <activity android:name=".activity.LayoutAnimationControllerDemo">
         </activity>
+        <activity android:name=".activity.HandlerTest">
+        </activity>
     </application>
 
 </manifest>
