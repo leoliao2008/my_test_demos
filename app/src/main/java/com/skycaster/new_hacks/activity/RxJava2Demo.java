@@ -8,10 +8,14 @@ import android.widget.ListView;
 
 import com.skycaster.new_hacks.R;
 
+import org.reactivestreams.Subscription;
+
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -49,54 +53,8 @@ public class RxJava2Demo extends AppCompatActivity {
     }
 
     public void startDemo(View view) {
-//        Observable.create(new ObservableOnSubscribe<String>() {
-//            @Override
-//            public void subscribe(@NonNull ObservableEmitter<String> observableEmitter) throws Exception {
-//                int i=0;
-//                while (i<100){
-//                    i++;
-//                    observableEmitter.onNext(String.valueOf(i));
-//                    try {
-//                        Thread.sleep(500);
-//                    }catch (Exception e){
-//                        e.printStackTrace();
-//                        break;
-//                    }
-//                }
-//                observableEmitter.onComplete();
-//            }
-//
-//        })
-//        .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<String>() {
-//
-//            @Override
-//            public void onSubscribe(@NonNull Disposable disposable) {
-//                if(mDisposable!=null&&!mDisposable.isDisposed()){
-//                    mDisposable.dispose();
-//                }
-//                mDisposable=disposable;
-//            }
-//
-//            @Override
-//            public void onNext(@NonNull String s) {
-//                mList.add(s);
-//                mAdapter.notifyDataSetChanged();
-//                mListView.smoothScrollToPosition(Integer.MAX_VALUE);
-//            }
-//
-//            @Override
-//            public void onError(@NonNull Throwable throwable) {
-//
-//            }
-//
-//            @Override
-//            public void onComplete() {
-//                if(!mDisposable.isDisposed()){
-//                    mDisposable.dispose();
-//                }
-//            }
-//        });
-        startDemoUsingConsumerClass();
+//        startDemoUsingConsumerClass();
+        testInterval();
     }
 
     private void startDemoUsingConsumerClass(){
@@ -167,5 +125,27 @@ public class RxJava2Demo extends AppCompatActivity {
         if(mDisposable!=null&&!mDisposable.isDisposed()){
             mDisposable.dispose();
         }
+    }
+
+    private void testInterval(){
+        Flowable.interval(1, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).map(new Function<Long, String>() {
+            @Override
+            public String apply(@NonNull Long aLong) throws Exception {
+                return String.valueOf(aLong);
+            }
+        }).doOnSubscribe(new Consumer<Subscription>() {
+            @Override
+            public void accept(Subscription subscription) throws Exception {
+                mList.clear();
+                mAdapter.notifyDataSetChanged();
+            }
+        }).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                mList.add(s);
+                mAdapter.notifyDataSetChanged();
+                mListView.smoothScrollToPosition(Integer.MAX_VALUE);
+            }
+        });
     }
 }
