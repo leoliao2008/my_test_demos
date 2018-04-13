@@ -83,6 +83,12 @@
         </activity>
         <activity android:name=".activity.HandlerTest">
         </activity>
+        <activity android:name=".activity.KeyboardActivity">
+        </activity>
+        <activity android:name=".activity.RxJavaDemo">
+        </activity>
+        <activity android:name=".activity.RxJava2Demo">
+        </activity>
     </application>
 
 </manifest>

@@ -52,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
             "波纹特效测试",
             "波浪特效测试",
             "LayoutAnimationController实验",
-            "Handler耗时测试"
-
+            "Handler耗时测试",
+            "自定义小键盘",
+            "RxJava第一代测试",
+            "RxJava第二代测试"
     };
     private Class[] mActivities=new Class[]{
             IpcTestActivity.class,
@@ -81,7 +83,10 @@ public class MainActivity extends AppCompatActivity {
             RippleActivity.class,
             WavaViewDemo.class,
             LayoutAnimationControllerDemo.class,
-            HandlerTest.class
+            HandlerTest.class,
+            KeyboardActivity.class,
+            RxJavaDemo.class,
+            RxJava2Demo.class
     };
 
     @Override
