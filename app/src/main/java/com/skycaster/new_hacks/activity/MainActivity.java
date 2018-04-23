@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
             "Handler耗时测试",
             "自定义小键盘",
             "RxJava第一代测试",
-            "RxJava第二代测试"
+            "RxJava第二代测试",
+            "贝塞尔曲线测试"
     };
     private Class[] mActivities=new Class[]{
             IpcTestActivity.class,
@@ -86,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
             HandlerTest.class,
             KeyboardActivity.class,
             RxJavaDemo.class,
-            RxJava2Demo.class
+            RxJava2Demo.class,
+            CubicLineDemo.class
     };
 
     @Override

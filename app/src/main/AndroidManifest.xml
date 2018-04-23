@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.skycaster.new_hacks">
+<manifest package="com.skycaster.new_hacks"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -88,6 +88,8 @@
         <activity android:name=".activity.RxJavaDemo">
         </activity>
         <activity android:name=".activity.RxJava2Demo">
+        </activity>
+        <activity android:name=".activity.CubicLineDemo">
         </activity>
     </application>
 
