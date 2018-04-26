@@ -5,11 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.skycaster.new_hacks.activity.BezierDemo">
-    <!--<com.skycaster.new_hacks.customized.BezierView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"/>-->
-    <com.skycaster.new_hacks.customized.CloudAndLeafView
+    tools:context="com.skycaster.new_hacks.activity.PathDemo">
+    <com.skycaster.new_hacks.customized.PathDemoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

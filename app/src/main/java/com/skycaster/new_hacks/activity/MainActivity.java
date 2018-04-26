@@ -56,7 +56,11 @@ public class MainActivity extends AppCompatActivity {
             "自定义小键盘",
             "RxJava第一代测试",
             "RxJava第二代测试",
-            "贝塞尔曲线测试"
+            "贝塞尔曲线测试",
+            "Path测试",
+            "Canvas测试",
+            "Skew测试",
+            "获取正切值"
     };
     private Class[] mActivities=new Class[]{
             IpcTestActivity.class,
@@ -88,7 +92,11 @@ public class MainActivity extends AppCompatActivity {
             KeyboardActivity.class,
             RxJavaDemo.class,
             RxJava2Demo.class,
-            CubicLineDemo.class
+            BezierDemo.class,
+            PathDemo.class,
+            CanvasDemo.class,
+            SkewDemo.class,
+            GetTangeDemo.class
     };
 
     @Override

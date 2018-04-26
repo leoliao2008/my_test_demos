@@ -22,31 +22,31 @@ import java.util.ArrayList;
  * 更新描述   ${TODO}
  */
 
-public class CubicView extends View {
+public class BezierView extends View {
     private Paint mLinePainter;
-    private Paint mCirclePainter;
+    private Paint mKnotPainter;
     private ArrayList<Point> mPoints=new ArrayList<>();
     private Path mPath;
 
-    public CubicView(Context context) {
+    public BezierView(Context context) {
         this(context,null);
     }
 
-    public CubicView(Context context, @Nullable AttributeSet attrs) {
+    public BezierView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public CubicView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public BezierView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        //paint that draw cubic lines
+        //init paint that draws bezier lines
         mLinePainter=new Paint(Paint.ANTI_ALIAS_FLAG);
         mLinePainter.setStyle(Paint.Style.STROKE);
         mLinePainter.setColor(Color.BLUE);
 
-        //paint that draw circles in each knot
-        mCirclePainter=new Paint(Paint.ANTI_ALIAS_FLAG);
-        mCirclePainter.setStyle(Paint.Style.FILL);
-        mCirclePainter.setColor(Color.RED);
+        //init paint that draws circles in each knot
+        mKnotPainter =new Paint(Paint.ANTI_ALIAS_FLAG);
+        mKnotPainter.setStyle(Paint.Style.FILL);
+        mKnotPainter.setColor(Color.RED);
 
         //add emulated points
         mPoints.add(new Point(100,200));
@@ -55,7 +55,7 @@ public class CubicView extends View {
         mPoints.add(new Point(200,100));
         mPoints.add(new Point(250,350));
 
-        //init cubic path
+        //init bezier path
         mPath=new Path();
         for(int i=0;i<mPoints.size()-1;i++){
 //            mPath.reset();
@@ -74,12 +74,12 @@ public class CubicView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawPath(mPath,mLinePainter);
-        drawCircles(canvas);
+        drawKnots(canvas);
     }
 
-    private void drawCircles(Canvas canvas) {
+    private void drawKnots(Canvas canvas) {
         for(Point p:mPoints){
-            canvas.drawCircle(p.x,p.y,10,mCirclePainter);
+            canvas.drawCircle(p.x,p.y,10, mKnotPainter);
         }
     }
 }

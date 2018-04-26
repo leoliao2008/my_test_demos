@@ -5,7 +5,10 @@ import android.os.Bundle;
 
 import com.skycaster.new_hacks.R;
 
-public class CubicLineDemo extends AppCompatActivity {
+/**
+ * https://www.jianshu.com/p/1d766455445b
+ */
+public class BezierDemo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
