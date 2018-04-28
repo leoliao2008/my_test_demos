@@ -99,6 +99,8 @@
         </activity>
         <activity android:name=".activity.GetTangeDemo">
         </activity>
+        <activity android:name=".activity.SetPolyToPolyDemo">
+        </activity>
     </application>
 
 </manifest>

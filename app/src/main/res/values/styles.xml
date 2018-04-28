@@ -21,6 +21,10 @@
         <attr name="src" format="reference"/>
     </declare-styleable>
 
+    <declare-styleable name="PolyToPolyView">
+        <attr name="ctrlPointCnt" format="integer"/>
+    </declare-styleable>
+
 
 
 
