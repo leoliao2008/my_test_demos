@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
             "Canvas测试",
             "Skew测试",
             "获取正切值",
-            "SetPolyToPoly测试"
+            "SetPolyToPoly测试",
+            "Camera实验1",
     };
     private Class[] mActivities=new Class[]{
             IpcTestActivity.class,
@@ -98,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
             CanvasDemo.class,
             SkewDemo.class,
             GetTangeDemo.class,
-            SetPolyToPolyDemo.class
+            SetPolyToPolyDemo.class,
+            CameraDemo1.class
     };
 
     @Override

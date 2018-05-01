@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.skycaster.new_hacks">
+<manifest package="com.skycaster.new_hacks"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -100,6 +100,8 @@
         <activity android:name=".activity.GetTangeDemo">
         </activity>
         <activity android:name=".activity.SetPolyToPolyDemo">
+        </activity>
+        <activity android:name=".activity.CameraDemo1">
         </activity>
     </application>
 
