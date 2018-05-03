@@ -5,29 +5,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.skycaster.new_hacks.activity.GetTangeDemo">
+    tools:context="com.skycaster.new_hacks.activity.TextPathDemo">
+
+    <com.skycaster.new_hacks.customized.TextPathDemoView
+        android:id="@+id/text_progress_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="bottom">
         <Button
-            android:text="Start"
             android:onClick="startAnimStrokeByStroke"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Stroke by Stroke"/>
         <Button
-            android:text="Stop"
-            android:onClick="stopAnim"
+            android:onClick="startAnimAsyncWriting"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Write Asynchronously"/>
     </LinearLayout>
 
 
-    <com.skycaster.new_hacks.customized.GetTangeView
-        android:id="@+id/tange_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+
+
 
 </FrameLayout>

@@ -28,13 +28,13 @@ public class CameraDemo1 extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 switch (checkedId){
                     case R.id.x:
-                        mMyCustomView.rotaX();
+                        mMyCustomView.rotateX();
                         break;
                     case R.id.y:
-                        mMyCustomView.rotaY();
+                        mMyCustomView.rotateY();
                         break;
                     case R.id.z:
-                        mMyCustomView.rotaZ();
+                        mMyCustomView.rotateZ();
                         break;
                 }
             }
